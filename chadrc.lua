@@ -3,12 +3,12 @@ local M = {}
 
 -- Path to overriding theme and highlights files
 local highlights = require "custom.highlights"
+-- require("custom.lsp")
 
 M.ui = {
-	theme_toggle = { "catppuccin", "catppuccin_latte" },
-	theme = "catppuccin",
+	theme_toggle = { "tokyonight", "catppuccin" },
+	theme = "tokyonight",
 	transparency = true,
-
 	hl_override = highlights.override,
 	hl_add = highlights.add,
 }
