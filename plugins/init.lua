@@ -1,6 +1,7 @@
 local overrides = require "custom.plugins.overrides"
 
 return {
+
 	["folke/which-key.nvim"] = {
 		disable = false,
 		config = function()
@@ -125,15 +126,6 @@ return {
 		config = function()
 			require "custom.plugins.tokyonight"
 			-- vim.cmd [[colorscheme tokyonight-night]]
-		end,
-	},
-
-	-- Dasboard
-	["goolord/alpha-nvim"] = {
-		-- after = "base46",
-		disable = false,
-		config = function()
-			require "custom.plugins.alpha"
 		end,
 	},
 }

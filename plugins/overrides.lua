@@ -143,8 +143,4 @@ M.nvimtree = {
 	},
 }
 
-M.alpha = {
-	dashboard = true,
-}
-
 return M
