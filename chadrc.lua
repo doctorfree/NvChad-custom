@@ -5,9 +5,9 @@ local M = {}
 local highlights = require "custom.highlights"
 
 M.ui = {
-	theme_toggle = { "tokyonight", "catppuccin" },
+	theme_toggle = { "catppuccin", "tokyonight" },
 	theme = "tokyonight",
-	transparency = true,
+	transparency = false,
   hl_override = highlights.override,
   hl_add = highlights.add,
   telescope = { style = "bordered" }, -- borderless / bordered

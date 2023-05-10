@@ -55,18 +55,6 @@ local plugins = {
 		end,
 	},
 
-	-- color scheme
-  {
-	  "folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000,
-    branch = "main",
-		config = function()
-			require "custom.configs.tokyonight"
-			vim.cmd [[colorscheme tokyonight-night]]
-		end,
-	},
-
   -- { import = "custom.configs.extras.copilot" },
   { import = "custom.configs.extras.diffview" },
   { import = "custom.configs.extras.mason-extras" },
