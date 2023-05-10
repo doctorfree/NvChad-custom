@@ -58,11 +58,12 @@ local plugins = {
 	-- color scheme
   {
 	  "folke/tokyonight.nvim",
-		-- commit = "66bfc2e8f754869c7b651f3f47a2ee56ae557764",
-		event = "BufWinEnter",
+    lazy = false,
+    priority = 1000,
+    branch = "main",
 		config = function()
 			require "custom.configs.tokyonight"
-			-- vim.cmd [[colorscheme tokyonight-night]]
+			vim.cmd [[colorscheme tokyonight-night]]
 		end,
 	},
 
