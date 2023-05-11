@@ -17,6 +17,18 @@ M.general = {
       end,
       "toggle theme"
     },
+    ["<leader>lc"] = {
+      function()
+        require("nvterm.terminal").send("lazyman -F", "float")
+      end,
+      "lazyman menu"
+    },
+    ["<leader>lm"] = {
+      function()
+        require("nvterm.terminal").send("lazyman", "float")
+      end,
+      "lazyman menu"
+    },
   },
 }
 
