@@ -21,7 +21,7 @@ M.general = {
       function()
         require("nvterm.terminal").send("lazyman -F", "float")
       end,
-      "lazyman menu"
+      "lazyman config"
     },
     ["<leader>lm"] = {
       function()
@@ -29,15 +29,27 @@ M.general = {
       end,
       "lazyman menu"
     },
+    ["<leader>tm"] = {
+      function()
+        require("nvterm.terminal").send("htop", "float")
+      end,
+      "htop system monitor"
+    },
+    ["<leader>lg"] = {
+      function()
+        require("nvterm.terminal").send("lazygit", "float")
+      end,
+      "lazygit git commands"
+    },
   },
 }
 
 -- Extras example
--- M.symbols_outline = {
---   n = {
---     ["<leader>cs"] = { "<cmd>SymbolsOutline<cr>", "Symbols Outline" },
---   },
--- }
+M.symbols_outline = {
+  n = {
+    ["<leader>cs"] = { "<cmd>SymbolsOutline<cr>", "Symbols Outline" },
+  },
+}
 
 -- more keybinds!
 

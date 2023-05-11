@@ -10,12 +10,12 @@ M.override = {
     italic = true,
   },
   NvDashAscii = {
-    bg = "none",
+    bg = "black",
     fg = "blue"
   },
   NvDashButtons = {
-    bg = "none",
-    fg = "light_grey"
+    bg = "black2",
+    fg = "blue"
   }
 }
 
