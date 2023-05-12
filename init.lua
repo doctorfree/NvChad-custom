@@ -1,15 +1,11 @@
 local autocmd = vim.api.nvim_create_autocmd
 
--- TODO: figure out how to disable tabline and statusline for nvdash
 local dash_group = vim.api.nvim_create_augroup("NvDash_au", { clear = true })
 autocmd("Filetype", {
   pattern = "nvdash",
   group = dash_group,
   callback = function()
-    -- require("lualine").hide({
-    --   place = { "statusline", "tabline", "winbar" },
-    --   unhide = false,
-    -- })
+    vim.opt.showtabline = 0
     vim.cmd([[ setlocal nonumber norelativenumber nocursorline noruler ]])
   end,
 })
@@ -17,10 +13,9 @@ autocmd("BufUnload", {
   desc = "enable status and tabline after nvdash",
   group = dash_group,
   callback = function()
-    -- require("lualine").hide({
-    --   place = { "statusline", "tabline", "winbar" },
-    --   unhide = true,
-    -- })
+    if vim.bo.filetype == "nvdash" then
+      vim.opt.showtabline = 2
+    end
   end,
 })
 
