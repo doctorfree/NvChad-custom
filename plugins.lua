@@ -1,4 +1,7 @@
 local overrides = require("custom.configs.overrides")
+local lsp_on_attach = require("plugins.configs.lspconfig").on_attach
+local capabilities = require("plugins.configs.lspconfig").capabilities
+local lspconfig = require "lspconfig"
 
 --- @param on_attach fun(client, buffer)
 local navic_on_attach = function(on_attach)
@@ -74,6 +77,43 @@ local plugins = {
       require("mason-lspconfig").setup({
         ensure_installed = overrides.lsp_servers,
         automatic_installation = true,
+      })
+      require("mason-lspconfig").setup_handlers({
+        -- Default setup for all servers, unless a custom one is defined below
+        function(server_name)
+          lspconfig[server_name].setup({
+            on_attach = function(client, bufnr)
+              lsp_on_attach(client, bufnr)
+            end,
+            capabilities = capabilities,
+          })
+        end,
+        -- custom setup for a server goes after the function above
+        -- Example, override rust_analyzer
+        -- ["rust_analyzer"] = function ()
+        --   require("rust-tools").setup {}
+        -- end,
+        ["clangd"] = function()
+          lspconfig.clangd.setup({
+            cmd = {
+              "clangd",
+              "--offset-encoding=utf-16", -- To match null-ls
+              --  With this, you can configure server with
+              --    - .clangd files
+              --    - global clangd/config.yaml files
+              --  Read the `--enable-config` option in `clangd --help` for more information
+              "--enable-config",
+            },
+            on_attach = function(client, bufnr)
+              lsp_on_attach(client, bufnr)
+            end,
+            capabilities = capabilities,
+          })
+        end,
+
+        -- Example: disable auto configuring an LSP
+        -- Here, we disable lua_ls so we can use NvChad's default config
+        ["lua_ls"] = function() end,
       })
       require("custom.configs.lspconfig")
     end,
@@ -166,28 +206,6 @@ local plugins = {
           end
         end,
       })
-    end,
-  },
-
-  {
-    "VonHeikemen/lsp-zero.nvim",
-    branch = "v2.x",
-    dependencies = {
-      -- LSP Support
-      { "neovim/nvim-lspconfig" },             -- Required
-      { "williamboman/mason.nvim" },
-      { "williamboman/mason-lspconfig.nvim" }, -- Optional
-      -- Autocompletion
-      { "hrsh7th/nvim-cmp" },                  -- Required
-      { "hrsh7th/cmp-nvim-lsp" },              -- Required
-      { "L3MON4D3/LuaSnip" },                  -- Required
-    },
-    config = function()
-      local lsp = require("lsp-zero").preset({})
-      lsp.on_attach(function(client, bufnr)
-        lsp.default_keymaps({ buffer = bufnr })
-      end)
-      lsp.setup()
     end,
   },
 
