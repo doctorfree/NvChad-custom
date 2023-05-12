@@ -6,6 +6,23 @@ local plugins = {
   -- Override plugin definition options
 
   {
+    "hrsh7th/nvim-cmp",
+    version = false, -- last release is way too old
+    event = "VeryLazy",
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-cmdline",
+      "saadparwaiz1/cmp_luasnip",
+    },
+    config = function()
+      require "plugins.configs.cmp"
+      require "custom.configs.nvim-cmp"
+    end,
+  },
+
+  {
     "neovim/nvim-lspconfig",
     dependencies = {
       -- format & linting
