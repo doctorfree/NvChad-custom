@@ -5,9 +5,9 @@ local M = {}
 local highlights = require "custom.highlights"
 
 M.ui = {
-	theme_toggle = { "tokyonight", "catppuccin" },
-	theme = "catppuccin",
-	transparency = false,
+  theme_toggle = { "tokyonight", "catppuccin" },
+  theme = "catppuccin",
+  transparency = false,
   hl_override = highlights.override,
   hl_add = highlights.add,
   lsp_semantic_tokens = true, -- adds highlight groups for lsp semantic tokens

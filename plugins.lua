@@ -62,12 +62,12 @@ local plugins = {
   },
 
   {
-	  "phaazon/hop.nvim",
-		branch = "v2",
-		config = function()
-			require("hop").setup()
-		end,
-	},
+    "phaazon/hop.nvim",
+    branch = "v2",
+    config = function()
+      require("hop").setup()
+    end,
+  },
 
   -- { import = "custom.configs.extras.copilot" },
   { import = "custom.configs.extras.diffview" },

@@ -29,7 +29,7 @@ local setup = function(_, opts)
     "tsserver",
     "vimls",
     "yamlls",
-	}
+  }
 
   require("mason").setup(opts)
 
