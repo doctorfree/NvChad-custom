@@ -35,6 +35,7 @@ local setup = function(_, opts)
 
   require("mason-lspconfig").setup({
     ensure_installed = servers,
+    automatic_installation = true,
   })
 
   -- This will setup lsp for servers you listed above

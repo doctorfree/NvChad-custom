@@ -13,7 +13,7 @@ M.ui = {
   lsp_semantic_tokens = true, -- adds highlight groups for lsp semantic tokens
   telescope = { style = "bordered" }, -- borderless / bordered
   -- https://github.com/NvChad/base46/tree/v2.0/lua/base46/extended_integrations
-  extended_integrations = {"notify"}, -- these aren't compiled by default, ex: "alpha", "notify"
+  extended_integrations = {}, -- these aren't compiled by default, ex: "alpha", "notify"
 
   ------------------------------- nvchad_ui modules -----------------------------
   statusline = {
