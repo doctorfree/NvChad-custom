@@ -63,6 +63,8 @@ M.ui = {
 
 M.plugins = "custom.plugins"
 
+M.lazy_nvim = require "custom.configs.lazy_nvim"
+
 -- check core.mappings for table structure
 M.mappings = require "custom.mappings"
 

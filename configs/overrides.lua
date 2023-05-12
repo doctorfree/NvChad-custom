@@ -1,7 +1,51 @@
 local M = {}
 
+  -- lsp servers to install
+M.lsp_servers = {
+  "bashls",
+  "cssmodules_ls",
+  "denols",
+  "dockerls",
+  "eslint",
+  "gopls",
+  "graphql",
+  "html",
+  "jsonls",
+  "julials",
+  "ltex",
+  "lua_ls",
+  "marksman",
+  "pylsp",
+  "pyright",
+  "sqlls",
+  "tailwindcss",
+  "terraformls",
+  "texlab",
+  "tsserver",
+  "vimls",
+  "yamlls",
+}
+
+-- Formatters and linters installed by Mason
+M.formatters_linters = {
+  "actionlint",
+  "goimports",
+  "gofumpt",
+  "golangci-lint",
+  "google-java-format",
+  "latexindent",
+  "markdownlint",
+  "prettier",
+  "sql-formatter",
+  "shellcheck",
+  "shfmt",
+  "stylua",
+  "tflint",
+  "yamllint",
+}
+
 M.mason = {
-  ensure_installed = {}, -- not an option from mason.nvim
+  ensure_installed = {},
 
   PATH = "prepend",
 
