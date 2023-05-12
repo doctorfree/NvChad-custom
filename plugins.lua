@@ -25,6 +25,15 @@ local plugins = {
   -- override plugin configs
   {
     "williamboman/mason.nvim",
+    build = ":MasonUpdate",
+    cmd = {
+      "Mason",
+      "MasonInstall",
+      "MasonInstallAll",
+      "MasonUninstall",
+      "MasonUninstallAll",
+      "MasonLog"
+    },
     opts = overrides.mason
   },
 
