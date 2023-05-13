@@ -54,7 +54,7 @@ M.ui = {
       { "  Bookmarks", "Spc b m", "Telescope marks" },
       { "  Themes", "Spc t h", "Telescope themes" },
       { "  Mappings", "Spc c h", "NvCheatsheet" },
-      { "  Quit", "Spc q q", "Quit" },
+      { "  Quit", "Spc q", "Quit" },
     },
   },
 
@@ -64,6 +64,11 @@ M.ui = {
 M.plugins = "custom.plugins"
 
 M.lazy_nvim = {
+  install = {
+    colorscheme = { "nvchad" },
+    -- install missing plugins on startup. This doesn't increase startup time.
+    missing = true,
+  },
   ui = {
     icons = {
       ft = "",
