@@ -1,6 +1,10 @@
 local autocmd = vim.api.nvim_create_autocmd
 local user_showtabline = 2
 
+-- Change mapleader and maplocalleader from space to comma
+vim.g.mapleader = ","
+vim.g.maplocalleader = ","
+
 local dash_group = vim.api.nvim_create_augroup("NvDash_au", { clear = true })
 autocmd("Filetype", {
   pattern = "nvdash",

@@ -36,13 +36,13 @@ M.ui = {
     -- },
 
     buttons = {
-      { "  Find File", "Spc f f", "Telescope find_files" },
-      { "  Recent Files", "Spc f o", "Telescope oldfiles" },
-      { "  Find Word", "Spc f w", "Telescope live_grep" },
-      { "  Bookmarks", "Spc b m", "Telescope marks" },
-      { "  Themes", "Spc t h", "Telescope themes" },
-      { "  Mappings", "Spc c h", "NvCheatsheet" },
-      { "  Quit", "Spc q", "Quit" },
+      { "  Find File", ", f f", "Telescope find_files" },
+      { "  Recent Files", ", f o", "Telescope oldfiles" },
+      { "  Find Word", ", f w", "Telescope live_grep" },
+      { "  Bookmarks", ", b m", "Telescope marks" },
+      { "  Themes", ", t h", "Telescope themes" },
+      { "  Mappings", ", c h", "NvCheatsheet" },
+      { "  Quit", ", q  ", "Quit" },
     },
   },
 
