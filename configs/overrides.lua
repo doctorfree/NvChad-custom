@@ -1,7 +1,34 @@
 local M = {}
 
-  -- lsp servers to install
+-- lsp servers to install, see:
+-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 M.lsp_servers = {
+  "awk_ls",
+  "bashls",
+  "cssmodules_ls",
+  "denols",
+  "dockerls",
+  "eslint",
+  "gopls",
+  "html",
+  "jsonls",
+  "ltex",
+  "marksman",
+  "pylsp",
+  "pyright",
+  "sqlls",
+  "tailwindcss",
+  "terraform_lsp",
+  "texlab",
+  "tsserver",
+  "vimls",
+  "yamlls",
+}
+-- Some Mason lsp server packages are named differently than in lspconfig. Why?
+-- See: https://mason-registry.dev/registry/list
+M.lsp_servers_mason = {
+  "awk-language-server",
+  "bash-language-server",
   "cssmodules-language-server",
   "deno",
   "dockerfile-language-server",

@@ -222,10 +222,10 @@ local plugins = {
       "MasonInstallAll",
       "MasonUninstall",
       "MasonUninstallAll",
-      "MasonLog"
+      "MasonLog",
+      "MasonUpdate"
     },
     lazy = false,
-    keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
     opts = overrides.mason,
     -- opts = function()
     --   return require "plugins.configs.mason"
@@ -236,10 +236,11 @@ local plugins = {
 
       -- custom nvchad cmd to install all mason binaries listed
       vim.api.nvim_create_user_command("MasonInstallAll", function()
-        vim.cmd("MasonInstall " .. table.concat(overrides.lsp_servers, " "))
+        vim.cmd("MasonInstall " .. table.concat(overrides.lsp_servers_mason, " "))
+        vim.cmd("MasonInstall " .. table.concat(overrides.formatters_linters, " "))
       end, {})
 
-      vim.g.mason_binaries_list = overrides.lsp_servers
+      vim.g.mason_binaries_list = overrides.lsp_servers_mason
     end,
   },
 

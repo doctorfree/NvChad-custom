@@ -4,6 +4,8 @@ local M = {}
 M.general = {
   n = {
     [";"] = { ":", "enter command mode", opts = { nowait = true } },
+    ["<leader>L"] = { "<cmd> Lazy <CR>", "Lazy" },
+    ["<leader>M"] = { "<cmd> Mason <CR>", "Mason" },
     ["<leader>q"] = { "<cmd> quitall! <CR>", "quit" },
     ["<leader>tT"] = {
       function()
