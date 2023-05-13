@@ -235,12 +235,16 @@ local plugins = {
       require("mason").setup(opts)
 
       -- custom nvchad cmd to install all mason binaries listed
+      local mason_packages = overrides.lsp_servers_mason
+      local mason_fml = overrides.formatters_linters
+      for i=1,#mason_fml do
+        mason_packages[#mason_packages+1] = mason_fml[i]
+      end
       vim.api.nvim_create_user_command("MasonInstallAll", function()
-        vim.cmd("MasonInstall " .. table.concat(overrides.lsp_servers_mason, " "))
-        vim.cmd("MasonInstall " .. table.concat(overrides.formatters_linters, " "))
+        vim.cmd("MasonInstall " .. table.concat(mason_packages, " "))
       end, {})
 
-      vim.g.mason_binaries_list = overrides.lsp_servers_mason
+      vim.g.mason_binaries_list = mason_packages
     end,
   },
 
@@ -299,9 +303,7 @@ local plugins = {
     end,
   },
 
-  -- { import = "custom.configs.extras.copilot" },
   { import = "custom.configs.extras.diffview" },
-  -- { import = "custom.configs.extras.mason-extras" },
   { import = "custom.configs.extras.symbols-outline" },
   { import = "custom.configs.extras.trouble" },
 }
