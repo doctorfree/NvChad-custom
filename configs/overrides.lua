@@ -18,7 +18,7 @@ M.lsp_servers = {
   "pyright",
   "sqlls",
   "tailwindcss",
-  "terraform_lsp",
+  "terraformls",
   "texlab",
   "tsserver",
   "vimls",
