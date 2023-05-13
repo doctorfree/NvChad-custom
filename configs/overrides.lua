@@ -2,7 +2,6 @@ local M = {}
 
   -- lsp servers to install
 M.lsp_servers = {
-  "bashls",
   "cssmodules_ls",
   "denols",
   "dockerls",
