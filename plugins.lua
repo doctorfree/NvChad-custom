@@ -303,7 +303,6 @@ local plugins = {
     end,
   },
 
-  { import = "custom.configs.diffview" },
   { import = "custom.configs.symbols-outline" },
   { import = "custom.configs.trouble" },
 }
