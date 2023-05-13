@@ -221,6 +221,8 @@ local plugins = {
       "MasonUninstallAll",
       "MasonLog"
     },
+    lazy = false,
+    keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
     opts = overrides.mason
   },
 
