@@ -303,9 +303,9 @@ local plugins = {
     end,
   },
 
-  { import = "custom.configs.extras.diffview" },
-  { import = "custom.configs.extras.symbols-outline" },
-  { import = "custom.configs.extras.trouble" },
+  { import = "custom.configs.diffview" },
+  { import = "custom.configs.symbols-outline" },
+  { import = "custom.configs.trouble" },
 }
 
 return plugins
