@@ -46,41 +46,27 @@ autocmd("BufUnload", {
   end,
 })
 
-local term_group = vim.api.nvim_create_augroup("NvTerm_au", { clear = true })
-autocmd({ "BufEnter" }, {
-  desc = "preserve status and tabline entering nvterm",
+local function augroup(name)
+  return vim.api.nvim_create_augroup("lazyman_" .. name, { clear = true })
+end
+
+local term_group = vim.api.nvim_create_augroup("Terminal_au", { clear = true })
+
+-- Check if we need to reload the file when it changed
+vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
   group = term_group,
-  pattern = "term://*",
-  callback = function()
-    if vim.opt.showtabline ~= nil then
-      user_showtabline = vim.opt.showtabline
-    else
-      user_showtabline = 2
-    end
-    if vim.opt.laststatus ~= nil then
-      user_laststatus = vim.opt.laststatus
-    else
-      user_laststatus = 3
-    end
-    vim.opt.showtabline = 0
-    vim.opt.laststatus = 0
-  end,
+  command = "checktime",
 })
 
-autocmd({ "BufLeave" }, {
-  desc = "preserve status and tabline leaving nvterm",
+-- Auto insert mode for Terminal
+vim.api.nvim_create_autocmd({ "WinEnter", "BufWinEnter", "TermOpen" }, {
+  desc = "Auto insert mode entering window, buffer, terminal",
   group = term_group,
-  pattern = "term://*",
-  callback = function()
-    if user_showtabline ~= nil then
-      vim.opt.showtabline = user_showtabline
-    else
-      vim.opt.showtabline = 2
-    end
-    if user_laststatus ~= nil then
-      vim.opt.laststatus = user_laststatus
-    else
-      vim.opt.laststatus = 3
+  callback = function(args)
+    if vim.startswith(vim.api.nvim_buf_get_name(args.buf), "term://") then
+      vim.opt_local.wrap = true
+      vim.opt_local.spell = false
+      vim.cmd("startinsert")
     end
   end,
 })
