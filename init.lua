@@ -46,45 +46,6 @@ autocmd("BufUnload", {
   end,
 })
 
-local term_group = vim.api.nvim_create_augroup("NvTerm_au", { clear = true })
-autocmd({ "BufEnter" }, {
-  desc = "preserve status and tabline entering nvterm",
-  group = term_group,
-  pattern = "term://*",
-  callback = function()
-    if vim.opt.showtabline ~= nil then
-      user_showtabline = vim.opt.showtabline
-    else
-      user_showtabline = 2
-    end
-    if vim.opt.laststatus ~= nil then
-      user_laststatus = vim.opt.laststatus
-    else
-      user_laststatus = 3
-    end
-    vim.opt.showtabline = 0
-    vim.opt.laststatus = 0
-  end,
-})
-
-autocmd({ "BufLeave" }, {
-  desc = "preserve status and tabline leaving nvterm",
-  group = term_group,
-  pattern = "term://*",
-  callback = function()
-    if user_showtabline ~= nil then
-      vim.opt.showtabline = user_showtabline
-    else
-      vim.opt.showtabline = 2
-    end
-    if user_laststatus ~= nil then
-      vim.opt.laststatus = user_laststatus
-    else
-      vim.opt.laststatus = 3
-    end
-  end,
-})
-
 -- Auto resize panes when resizing nvim window
 autocmd("VimResized", {
   pattern = "*",

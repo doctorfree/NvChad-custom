@@ -4,8 +4,13 @@ local M = {}
 M.general = {
   n = {
     [";"] = { ":", "enter command mode", opts = { nowait = true } },
-    ["<leader>L"] = { "<cmd> Lazy <CR>", "Lazy" },
-    ["<leader>M"] = { "<cmd> Mason <CR>", "Mason" },
+    ["<leader>P"] = { "<cmd> Lazy <CR>", "Lazy plugin mgr" },
+    ["<leader>M"] = { "<cmd> Mason <CR>", "Mason package mgr" },
+    ["<leader>H"] = { "<cmd> Htop <CR>", "Htop system monitor" },
+    ["<leader>G"] = { "<cmd> Lazygit <CR>", "Lazygit command" },
+    ["<leader>L"] = { "<cmd> Lazyman <CR>", "Lazyman menu" },
+    ["<leader>C"] = { "<cmd> Lazyconf <CR>", "Lazyman configuration" },
+    ["<leader>A"] = { "<cmd> Asciiville <CR>", "Asciiville" },
     ["<leader>q"] = { "<cmd> quitall! <CR>", "quit" },
     ["<leader>tT"] = {
       function()
@@ -18,34 +23,6 @@ M.general = {
         require("base46").toggle_theme()
       end,
       "toggle theme"
-    },
-    ["<leader>lc"] = {
-      function()
-        local float_term = require("nvterm.terminal").new("float")
-        vim.api.nvim_chan_send(float_term.job_id, "exec lazyman -F\n")
-      end,
-      "lazyman config"
-    },
-    ["<leader>lm"] = {
-      function()
-        local float_term = require("nvterm.terminal").new("float")
-        vim.api.nvim_chan_send(float_term.job_id, "exec lazyman\n")
-      end,
-      "lazyman menu"
-    },
-    ["<leader>tm"] = {
-      function()
-        local float_term = require("nvterm.terminal").new("float")
-        vim.api.nvim_chan_send(float_term.job_id, "exec htop\n")
-      end,
-      "htop system monitor"
-    },
-    ["<leader>lg"] = {
-      function()
-        local float_term = require("nvterm.terminal").new("float")
-        vim.api.nvim_chan_send(float_term.job_id, "exec lazygit\n")
-      end,
-      "lazygit git commands"
     },
   },
 }

@@ -258,11 +258,6 @@ local plugins = {
     opts = overrides.nvimtree,
   },
 
-  {
-    "NvChad/nvterm",
-    opts = overrides.nvterm,
-  },
-
   -- Install a plugin
 
   -- lsp symbol navigation
@@ -301,6 +296,25 @@ local plugins = {
     config = function()
       require("hop").setup()
     end,
+  },
+
+  {
+    "rebelot/terminal.nvim",
+    cmd = {
+      "Asciiville",
+      "TermOpen",
+      "TermToggle",
+      "TermRun",
+      "Lazygit",
+      "IPython",
+      "Lazyman",
+      "Lazyconf",
+      "Htop",
+    },
+    event = "TermOpen",
+    config = function()
+      require("custom.configs.terminal_nvim")
+    end
   },
 
   { import = "custom.configs.symbols-outline" },
