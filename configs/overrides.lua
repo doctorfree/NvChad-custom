@@ -185,7 +185,7 @@ M.nvterm = {
   behavior = {
     autoclose_on_quit = {
       enabled = true,
-      confirm = true,
+      confirm = false,
     },
     close_on_exit = true,
     auto_insert = true,

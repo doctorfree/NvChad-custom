@@ -21,25 +21,29 @@ M.general = {
     },
     ["<leader>lc"] = {
       function()
-        require("nvterm.terminal").send("lazyman -F", "float")
+        local float_term = require("nvterm.terminal").new("float")
+        vim.api.nvim_chan_send(float_term.job_id, "exec lazyman -F\n")
       end,
       "lazyman config"
     },
     ["<leader>lm"] = {
       function()
-        require("nvterm.terminal").send("lazyman", "float")
+        local float_term = require("nvterm.terminal").new("float")
+        vim.api.nvim_chan_send(float_term.job_id, "exec lazyman\n")
       end,
       "lazyman menu"
     },
     ["<leader>tm"] = {
       function()
-        require("nvterm.terminal").send("htop", "float")
+        local float_term = require("nvterm.terminal").new("float")
+        vim.api.nvim_chan_send(float_term.job_id, "exec htop\n")
       end,
       "htop system monitor"
     },
     ["<leader>lg"] = {
       function()
-        require("nvterm.terminal").send("lazygit", "float")
+        local float_term = require("nvterm.terminal").new("float")
+        vim.api.nvim_chan_send(float_term.job_id, "exec lazygit\n")
       end,
       "lazygit git commands"
     },

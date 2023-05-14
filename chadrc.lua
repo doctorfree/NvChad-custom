@@ -26,15 +26,7 @@ M.ui = {
   -- nvdash (dashboard)
   nvdash = {
     load_on_startup = true,
-
     header = header,
-    -- header = {
-    --   "  █▄▄▄▄ ▄▄▄ █ ▄ ▄▄▄ ▄ ▄▄▄ ▄ ▄ █ ▄",
-    --   "▄ █ █▄█ █▄█ █ █ █▄█ █ █▄█ ▄▄▄ █ █",
-    --   "█▄█ ▄ █▄▄█▄▄█ █ ▄▄█ █ ▄ █ █▄█▄█ █",
-    --   "    █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█ █▄█▄▄▄█    ",
-    -- },
-
     buttons = {
       { "  Find File", ", f f", "Telescope find_files" },
       { "  Recent Files", ", f o", "Telescope oldfiles" },
