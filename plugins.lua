@@ -20,6 +20,11 @@ local plugins = {
   -- Override plugin definition options
 
   {
+    "NvChad/nvterm",
+    enabled = false
+  },
+
+  {
     "hrsh7th/nvim-cmp",
     version = false, -- last release is way too old
     event = "VeryLazy",
@@ -291,6 +296,23 @@ local plugins = {
   },
 
   {
+    "mfussenegger/nvim-treehopper",
+    lazy = false,
+    config = function()
+      local tree_hopper = require("tsht")
+      vim.keymap.set("n", "<leader>hm", function()
+        tree_hopper.nodes()
+      end, { desc = "Treehopper nodes" })
+      vim.keymap.set("n", "<leader>h[", function()
+        tree_hopper.move({ side = "start" })
+      end, { desc = "Move to start of Treehopper node" })
+      vim.keymap.set("n", "<leader>h]", function()
+        tree_hopper.move({ side = "end" })
+      end, { desc = "Move to end of Treehopper node" })
+    end,
+  },
+
+  {
     "phaazon/hop.nvim",
     branch = "v2",
     cmd = {
@@ -305,35 +327,7 @@ local plugins = {
     },
     lazy = false,
     config = function()
-      local hop = require('hop')
-      hop.setup()
-      local directions = require('hop.hint').HintDirection
-      vim.keymap.set('', 'f', function()
-        hop.hint_char1({
-          direction = directions.AFTER_CURSOR,
-          current_line_only = true
-        })
-      end, {remap=true})
-      vim.keymap.set('', 'F', function()
-        hop.hint_char1({
-          direction = directions.BEFORE_CURSOR,
-          current_line_only = true
-        })
-      end, {remap=true})
-      vim.keymap.set('', 't', function()
-        hop.hint_char1({
-          direction = directions.AFTER_CURSOR,
-          current_line_only = true,
-          hint_offset = -1
-        })
-      end, {remap=true})
-      vim.keymap.set('', 'T', function()
-        hop.hint_char1({
-          direction = directions.BEFORE_CURSOR,
-          current_line_only = true,
-          hint_offset = 1
-        })
-      end, {remap=true})
+      require("custom.configs.hop")
     end,
   },
 

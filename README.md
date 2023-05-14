@@ -66,3 +66,34 @@ Installation and initialization are performed by the `lazyman -c` command.
 | `F`        | Character before cursor, current line only         |
 | `t`        | Character after cursor, current line only, before  |
 | `T`        | Character before cursor, current line only, before |
+| `,hw`      | HopWord                                            |
+| `,hl`      | HopLineStart                                       |
+| `,hW`      | HopWordMW                                          |
+| `,hH`      | Hop hint pattern `[[\\d\\+]]`                      |
+| `,hf'`     | Hop hint pattern <code>\[[\"\\&#124;']]</code>     |
+| `,hf-`     | Hop hint pattern <code>\[[-\\&#124;+]]</code>      |
+| `,hf;`     | Hop hint pattern <code>\[[;\\&#124;:]]</code>      |
+| `,hf/`     | Hop hint pattern <code>\[[/\\&#124;?]]</code>      |
+| `,hqj`     | Hop hint pattern `[[(]]`                           |
+| `,hqk`     | Hop hint pattern `[[)]]`                           |
+| `,hq[`     | Hop hint pattern `[[{]]`                           |
+| `,hq]`     | Hop hint pattern `[[}]]`                           |
+| `,hd`      | Jump to definition                                 |
+| `yx`       | Hyper Yank with Treesitter Node Select             |
+| `yl`       | Hyper Yank a line                                  |
+| `yc`       | Hyper Yank Treesitter code block                   |
+| `ym`       | Using Treehopper to yank                           |
+| `vp`       | Using Hop to paste                                 |
+| `,vp`      | New line below target and paste                    |
+| `vP`       | Using Hop to paste                                 |
+| `,vP`      | New line above target and paste                    |
+| `vo`       | Using Hop to insert                                |
+| `,vo`      | Insert below target                                |
+| `vO`       | Using Hop to insert                                |
+| `,vO`      | Insert above target                                |
+| `vy`       | Normal insert Treehopper node                      |
+| `vY`       | Using Hop with macros, HopLineStart normal         |
+| `Ls`       | Trigger LuaSnip snippet                            |
+| `,hm`      | Treehopper nodes                                   |
+| `,h[`      | Move to start of Treehopper node                   |
+| `,h]`      | Move to end of Treehopper node                     |
