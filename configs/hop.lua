@@ -107,7 +107,7 @@ set("n", "yx", function()
 		vim.cmd([[normal! y]]) --> yank
 		jump_back_to_original_buffer(original_buffer)
 	end)
-end, opts)
+end, { desc = "Yank user syntax-tree-surfer", noremap = true, silent = true })
 
 -- Hyper Yank a line
 set("n", "yl", function()
@@ -118,7 +118,7 @@ set("n", "yl", function()
 		vim.cmd([[normal! yy]]) --> yank the line
 		jump_back_to_original_buffer(original_buffer)
 	end)
-end, opts)
+end, { desc = "Yank a line with HopLineStart", noremap = true, silent = true })
 
 -- Hyper Yank Treesitter Code Block
 set("n", "yc", function()
@@ -132,7 +132,7 @@ set("n", "yc", function()
 			jump_back_to_original_buffer(original_buffer)
 		end)
 	end)
-end, opts)
+end, { desc = "Yank a Treesitter code block", noremap = true, silent = true })
 
 -- Using nvim-treehopper to yank
 set("n", "ym", function()
@@ -141,7 +141,7 @@ set("n", "ym", function()
 		vim.cmd([[normal! V]]) --> go to visual selection mode
 		vim.cmd([[normal! y]]) --> yank
 	end)
-end, opts)
+end, { desc = "Yank using Treehopper", noremap = true, silent = true })
 
 --SECTION: Hyper Paste
 
@@ -150,7 +150,7 @@ set("n", "vp", function()
 	vim.schedule(function()
 		vim.cmd([[normal! p]]) --> paste
 	end)
-end, opts)
+end, { desc = "Paste below target using HopLineStart", noremap = true, silent = true })
 set("n", "<Leader>vp", function()
 	vim.cmd([[:HopLineStartMW]])
 	vim.schedule(function()
@@ -158,21 +158,21 @@ set("n", "<Leader>vp", function()
 		vim.cmd([[normal! o]]) --> make another new line below target
 		vim.cmd([[normal! p]]) --> paste
 	end)
-end, opts)
+end, { desc = "Paste below target using HopLineStart", noremap = true, silent = true })
 
 set("n", "vP", function()
 	vim.cmd([[:HopLineStartMW]])
 	vim.schedule(function()
 		vim.cmd([[normal! P]]) --> paste
 	end)
-end, opts)
+end, { desc = "Paste above target using HopLineStart", noremap = true, silent = true })
 set("n", "<Leader>vP", function()
 	vim.cmd([[:HopLineStartMW]])
 	vim.schedule(function()
 		vim.cmd([[normal! O]]) --> make another new line below target
 		vim.cmd([[normal! P]]) --> paste
 	end)
-end, opts)
+end, { desc = "Paste above target using HopLineStart", noremap = true, silent = true })
 
 set("n", "vo", function()
 	vim.cmd([[:HopLineStart]])
@@ -180,7 +180,7 @@ set("n", "vo", function()
 		vim.cmd([[normal! o]])
 		vim.cmd([[startinsert]])
 	end)
-end, opts)
+end, { desc = "Open new line below HopLineStart target", noremap = true, silent = true })
 set("n", "<Leader>vo", function()
 	vim.cmd([[:HopLineStart]])
 	vim.schedule(function()
@@ -188,7 +188,7 @@ set("n", "<Leader>vo", function()
 		vim.cmd([[normal! o]])
 		vim.cmd([[startinsert]])
 	end)
-end, opts)
+end, { desc = "Open new line below HopLineStart target", noremap = true, silent = true })
 
 set("n", "vO", function()
 	vim.cmd([[:HopLineStart]])
@@ -197,7 +197,7 @@ set("n", "vO", function()
 		vim.cmd([[normal! O]])
 		vim.cmd([[startinsert]])
 	end)
-end, opts)
+end, { desc = "Open new line above HopLineStart target", noremap = true, silent = true })
 set("n", "<Leader>vO", function()
 	vim.cmd([[:HopLineStart]])
 	vim.schedule(function()
@@ -205,7 +205,7 @@ set("n", "<Leader>vO", function()
 		vim.cmd([[normal! O]])
 		vim.cmd([[startinsert]])
 	end)
-end, opts)
+end, { desc = "Open new line above HopLineStart target", noremap = true, silent = true })
 
 --  Hop with Macros
 
@@ -214,7 +214,7 @@ set("n", "vY", function()
 	vim.schedule(function()
 		vim.cmd([[:normal @f]])
 	end)
-end, opts)
+end, { desc = "HopLineStart target in normal mode", noremap = true, silent = true })
 
 --  Hop can even trigger LuaSnip Snippets (complicated)
 
@@ -224,7 +224,7 @@ set("n", "Ls", function()
 		vim.cmd([[:normal ojja ]])
 		vim.cmd("startinsert")
 	end)
-end, opts)
+end, { desc = "Trigger LuaSnip snippet", noremap = true, silent = true })
 
 --  TSHT (Treesitter hint textobject) --> mfussenegger/nvim-treehopper
 
@@ -234,4 +234,4 @@ set("n", "vy", function()
 		vim.cmd([[normal! c]])
 		vim.cmd([[startinsert]])
 	end)
-end, opts)
+end, { desc = "Treehopper node target insert", noremap = true, silent = true })

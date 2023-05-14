@@ -295,6 +295,8 @@ local plugins = {
     end,
   },
 
+  { "ziontee113/syntax-tree-surfer" },
+
   {
     "mfussenegger/nvim-treehopper",
     lazy = false,

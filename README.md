@@ -87,9 +87,9 @@ Installation and initialization are performed by the `lazyman -c` command.
 | `,vp`      | New line below target and paste                    |
 | `vP`       | Using Hop to paste                                 |
 | `,vP`      | New line above target and paste                    |
-| `vo`       | Using Hop to insert                                |
+| `vo`       | Using Hop to open a new line below target          |
 | `,vo`      | Insert below target                                |
-| `vO`       | Using Hop to insert                                |
+| `vO`       | Using Hop to open a new line above target          |
 | `,vO`      | Insert above target                                |
 | `vy`       | Normal insert Treehopper node                      |
 | `vY`       | Using Hop with macros, HopLineStart normal         |
