@@ -46,6 +46,31 @@ autocmd("BufUnload", {
   end,
 })
 
+local function augroup(name)
+  return vim.api.nvim_create_augroup("lazyman_" .. name, { clear = true })
+end
+
+local term_group = vim.api.nvim_create_augroup("Terminal_au", { clear = true })
+
+-- Check if we need to reload the file when it changed
+vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
+  group = term_group,
+  command = "checktime",
+})
+
+-- Auto insert mode for Terminal
+vim.api.nvim_create_autocmd({ "WinEnter", "BufWinEnter", "TermOpen" }, {
+  desc = "Auto insert mode entering window, buffer, terminal",
+  group = term_group,
+  callback = function(args)
+    if vim.startswith(vim.api.nvim_buf_get_name(args.buf), "term://") then
+      vim.opt_local.wrap = true
+      vim.opt_local.spell = false
+      vim.cmd("startinsert")
+    end
+  end,
+})
+
 -- Auto resize panes when resizing nvim window
 autocmd("VimResized", {
   pattern = "*",

@@ -41,7 +41,7 @@ end
 
 if vim.fn.executable("lazygit") == 1 then
   local lazygit = require("terminal").terminal:new({
-    layout = { open_cmd = "float", border = "rounded", height = 0.9, width = 0.9 },
+    layout = { open_cmd = "float", border = "rounded", height = 0.8, width = 0.8 },
     cmd = { "lazygit" },
     autoclose = true,
   })
@@ -64,7 +64,7 @@ end
 
 if vim.fn.executable("lazyman") == 1 then
   local lazyman = require("terminal").terminal:new({
-    layout = { open_cmd = "float", border = "rounded", height = 0.95, width = 0.95 },
+    layout = { open_cmd = "float", border = "rounded", height = 0.85, width = 0.85 },
     cmd = { "lazyman" },
     autoclose = true,
   })
@@ -73,7 +73,7 @@ if vim.fn.executable("lazyman") == 1 then
   end, { nargs = "?" })
 
   local lazyconf = require("terminal").terminal:new({
-    layout = { open_cmd = "float", border = "rounded", height = 0.95, width = 0.95 },
+    layout = { open_cmd = "float", border = "rounded", height = 0.85, width = 0.85 },
     cmd = { "lazyman", "-F" },
     autoclose = true,
   })
@@ -84,7 +84,7 @@ end
 
 if vim.fn.executable("asciiville") == 1 then
   local asciiville = require("terminal").terminal:new({
-    layout = { open_cmd = "float", border = "rounded", height = 0.99, width = 0.99 },
+    layout = { open_cmd = "float", border = "rounded", height = 0.9, width = 0.9 },
     cmd = { "asciiville", "-i", "-G" },
     autoclose = true,
   })
