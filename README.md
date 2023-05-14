@@ -17,6 +17,7 @@ Installation and initialization are performed by the `lazyman -c` command.
   - Customized menu
 - Set mapleader and maplocalleader to `comma` rather than `space`
 - Convenience keymap `semi-colon` enters command mode
+- Jump anywhere in a document with a few keystrokes using [Hop](https://github.com/phaazon/hop.nvim)
 - Replace [nvterm](https://github.com/NvChad/nvterm) with [terminal.nvim](https://github.com/rebelot/terminal.nvim)
 - Preconfigured autocmds and keymaps for easy execution of terminal and editor commands
 
@@ -56,3 +57,12 @@ Installation and initialization are performed by the `lazyman -c` command.
 | `,tf`      | Terminal move float            |
 | `,q`       | Quit                           |
 
+
+## Hop keymaps
+
+| **Keymap** | **Description**                                    |
+| ---------- | -------------------------------------------------- |
+| `f`        | Character after cursor, current line only          |
+| `F`        | Character before cursor, current line only         |
+| `t`        | Character after cursor, current line only, before  |
+| `T`        | Character before cursor, current line only, before |
