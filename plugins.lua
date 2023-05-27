@@ -1,7 +1,4 @@
 local overrides = require("custom.configs.overrides")
-local lsp_on_attach = require("plugins.configs.lspconfig").on_attach
-local capabilities = require("plugins.configs.lspconfig").capabilities
-local lspconfig = require "lspconfig"
 
 --- @param on_attach fun(client, buffer)
 local navic_on_attach = function(on_attach)
@@ -56,6 +53,9 @@ local plugins = {
       require("core.utils").lazy_load "nvim-lspconfig"
     end,
     config = function()
+      local lsp_on_attach = require("plugins.configs.lspconfig").on_attach
+      local capabilities = require("plugins.configs.lspconfig").capabilities
+      local lspconfig = require "lspconfig"
       local opts = {
         ensure_installed = overrides.formatters_linters,
         ui = {
@@ -242,8 +242,8 @@ local plugins = {
       -- custom nvchad cmd to install all mason binaries listed
       local mason_packages = overrides.lsp_servers_mason
       local mason_fml = overrides.formatters_linters
-      for i=1,#mason_fml do
-        mason_packages[#mason_packages+1] = mason_fml[i]
+      for i = 1, #mason_fml do
+        mason_packages[#mason_packages + 1] = mason_fml[i]
       end
       vim.api.nvim_create_user_command("MasonInstallAll", function()
         vim.cmd("MasonInstall " .. table.concat(mason_packages, " "))
