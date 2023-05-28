@@ -131,8 +131,27 @@ null_ls.setup({
   },
 })
 
+local on_attach = require("plugins.configs.lspconfig").on_attach
 local lspconfig = require("lspconfig")
+local util = require "lspconfig/util"
 local navic = require("nvim-navic")
+
+lspconfig.gopls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  cmd = { "gopls" },
+  filetypes = { "go", "gomod", "gowork", "gotmpl" },
+  root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+  settings = {
+    gopls = {
+      completeUnimported = true,
+      usePlaceholders = true,
+      analyses = {
+        unusedparams = true,
+      },
+    },
+  },
+}
 
 lspconfig.jsonls.setup({
   capabilities = capabilities,

@@ -18,7 +18,7 @@ local plugins = {
 
   {
     "NvChad/nvterm",
-    enabled = false
+    enabled = false,
   },
 
   {
@@ -33,8 +33,8 @@ local plugins = {
       "saadparwaiz1/cmp_luasnip",
     },
     config = function()
-      require "plugins.configs.cmp"
-      require "custom.configs.nvim-cmp"
+      require("plugins.configs.cmp")
+      require("custom.configs.nvim-cmp")
     end,
   },
 
@@ -55,7 +55,7 @@ local plugins = {
     config = function()
       local lsp_on_attach = require("plugins.configs.lspconfig").on_attach
       local capabilities = require("plugins.configs.lspconfig").capabilities
-      local lspconfig = require "lspconfig"
+      local lspconfig = require("lspconfig")
       local opts = {
         ensure_installed = overrides.formatters_linters,
         ui = {
@@ -82,19 +82,19 @@ local plugins = {
       else
         install_ensured()
       end
-      require("mason-lspconfig").setup({
+      require("mason-lspconfig").setup {
         ensure_installed = overrides.lsp_servers,
         automatic_installation = true,
-      })
-      require("mason-lspconfig").setup_handlers({
+      }
+      require("mason-lspconfig").setup_handlers {
         -- Default setup for all servers, unless a custom one is defined below
         function(server_name)
-          lspconfig[server_name].setup({
+          lspconfig[server_name].setup {
             on_attach = function(client, bufnr)
               lsp_on_attach(client, bufnr)
             end,
             capabilities = capabilities,
-          })
+          }
         end,
         -- custom setup for a server goes after the function above
         -- Example, override rust_analyzer
@@ -102,7 +102,7 @@ local plugins = {
         --   require("rust-tools").setup {}
         -- end,
         ["clangd"] = function()
-          lspconfig.clangd.setup({
+          lspconfig.clangd.setup {
             cmd = {
               "clangd",
               "--offset-encoding=utf-16", -- To match null-ls
@@ -116,13 +116,14 @@ local plugins = {
               lsp_on_attach(client, bufnr)
             end,
             capabilities = capabilities,
-          })
+          }
         end,
 
         -- Example: disable auto configuring an LSP
         -- Here, we disable lua_ls so we can use NvChad's default config
         ["lua_ls"] = function() end,
-      })
+      }
+      require("plugins.configs.lspconfig")
       require("custom.configs.lspconfig")
     end,
   },
@@ -147,73 +148,73 @@ local plugins = {
       "mason.nvim",
     },
     config = function()
-      vim.filetype.add({
+      vim.filetype.add {
         extension = {
           zsh = "zsh",
         },
-      })
+      }
       local null_ls = require("null-ls")
       local formatting = null_ls.builtins.formatting
       local diagnostics = null_ls.builtins.diagnostics
       local actions = null_ls.builtins.code_actions
-      null_ls.setup({
+      null_ls.setup {
         debug = false,
         sources = {
-          formatting.prettier.with({
+          formatting.prettier.with {
             -- milliseconds
             timeout = 10000,
             extra_args = { "--single-quote", "false" },
-          }),
-          formatting.stylua.with({
+          },
+          formatting.stylua.with {
             timeout = 10000,
             extra_args = { "--indent-type", "Spaces", "--indent-width", "2" },
-          }),
+          },
           formatting.terraform_fmt,
           formatting.goimports,
           formatting.gofumpt,
-          formatting.latexindent.with({
+          formatting.latexindent.with {
             timeout = 10000,
             extra_args = { "-g", "/dev/null" }, -- https://github.com/cmhughes/latexindent.pl/releases/tag/V3.9.3
-          }),
+          },
           actions.shellcheck,
           actions.gitsigns,
-          formatting.shfmt.with({
+          formatting.shfmt.with {
             extra_args = { "-i", "2", "-ci", "-bn" },
             filetypes = { "sh", "zsh", "bash" },
-          }),
+          },
           diagnostics.ruff,
           formatting.google_java_format,
-          formatting.black.with({
+          formatting.black.with {
             timeout = 10000,
             extra_args = { "--fast" },
-          }),
-          formatting.sql_formatter.with({
+          },
+          formatting.sql_formatter.with {
             timeout = 10000,
             extra_args = { "--config" },
-          }),
+          },
           formatting.markdownlint,
-          formatting.beautysh.with({
+          formatting.beautysh.with {
             timeout = 10000,
             extra_args = { "--indent-size", "2" },
-          }),
-          diagnostics.zsh.with({
+          },
+          diagnostics.zsh.with {
             filetypes = { "zsh" },
-          }),
+          },
         },
         on_attach = function(client, bufnr)
-          if client.supports_method("textDocument/formatting") then
+          if client.supports_method "textDocument/formatting" then
             local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-            vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+            vim.api.nvim_clear_autocmds { group = augroup, buffer = bufnr }
             vim.api.nvim_create_autocmd("BufWritePre", {
               group = augroup,
               buffer = bufnr,
               callback = function()
-                vim.lsp.buf.format({ bufnr = bufnr })
+                vim.lsp.buf.format { bufnr = bufnr }
               end,
             })
           end
         end,
-      })
+      }
     end,
   },
 
@@ -228,7 +229,7 @@ local plugins = {
       "MasonUninstall",
       "MasonUninstallAll",
       "MasonLog",
-      "MasonUpdate"
+      "MasonUpdate",
     },
     lazy = false,
     opts = overrides.mason,
@@ -306,10 +307,10 @@ local plugins = {
         tree_hopper.nodes()
       end, { desc = "Treehopper nodes" })
       vim.keymap.set("n", "<leader>h[", function()
-        tree_hopper.move({ side = "start" })
+        tree_hopper.move { side = "start" }
       end, { desc = "Move to start of Treehopper node" })
       vim.keymap.set("n", "<leader>h]", function()
-        tree_hopper.move({ side = "end" })
+        tree_hopper.move { side = "end" }
       end, { desc = "Move to end of Treehopper node" })
     end,
   },
@@ -349,11 +350,37 @@ local plugins = {
     event = "TermOpen",
     config = function()
       require("custom.configs.terminal_nvim")
-    end
+    end,
   },
 
   { import = "custom.configs.symbols-outline" },
   { import = "custom.configs.trouble" },
-}
 
+  {
+    "mfussenegger/nvim-dap",
+    init = function()
+      require("core.utils").load_mappings("dap")
+    end
+  },
+  {
+    "dreamsofcode-io/nvim-dap-go",
+    ft = "go",
+    dependencies = "mfussenegger/nvim-dap",
+    config = function(_, opts)
+      require("dap-go").setup(opts)
+      require("core.utils").load_mappings("dap_go")
+    end
+  },
+  {
+    "olexsmir/gopher.nvim",
+    ft = "go",
+    config = function(_, opts)
+      require("gopher").setup(opts)
+      require("core.utils").load_mappings("gopher")
+    end,
+    build = function()
+      vim.cmd [[silent! GoInstallDeps]]
+    end,
+  },
+}
 return plugins
