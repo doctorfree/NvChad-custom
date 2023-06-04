@@ -19,6 +19,11 @@ local sources = {
   b.formatting.gofumpt,
   b.formatting.goimports_reviser,
   b.formatting.golines,
+
+  -- Python
+  b.formatting.black,
+  b.diagnostics.mypy,
+  b.diagnostics.ruff,
 }
 
 null_ls.setup {

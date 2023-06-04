@@ -133,7 +133,7 @@ null_ls.setup({
 
 local on_attach = require("plugins.configs.lspconfig").on_attach
 local lspconfig = require("lspconfig")
-local util = require "lspconfig/util"
+local lsputil = require "lspconfig/util"
 local navic = require("nvim-navic")
 
 lspconfig.gopls.setup {
@@ -141,7 +141,7 @@ lspconfig.gopls.setup {
   capabilities = capabilities,
   cmd = { "gopls" },
   filetypes = { "go", "gomod", "gowork", "gotmpl" },
-  root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+  root_dir = lsputil.root_pattern("go.work", "go.mod", ".git"),
   settings = {
     gopls = {
       completeUnimported = true,
@@ -160,6 +160,12 @@ lspconfig.jsonls.setup({
       schemas = require("schemastore").json.schemas(),
     },
   },
+})
+
+lspconfig.pyright.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = { "python" },
 })
 
 -- make sure to only run this once!
@@ -216,7 +222,6 @@ local other_servers_with_navic = {
   "vimls",
   "bashls",
   "awk_ls",
-  "pyright",
   "rust_analyzer",
   "ansiblels",
   "cmake",
@@ -290,8 +295,8 @@ lspconfig.lua_ls.setup({
     lspconfig = false,
     pathStrict = true,
     override = function(root_dir, library)
-      local util = require("neodev.util")
-      if util.has_file(root_dir, "/etc/nixos") or util.has_file(root_dir, "nvim-config") then
+      local neodevutil = require("neodev.util")
+      if neodevutil.has_file(root_dir, "/etc/nixos") or neodevutil.has_file(root_dir, "nvim-config") then
         library.enabled = true
         library.plugins = true
       end
